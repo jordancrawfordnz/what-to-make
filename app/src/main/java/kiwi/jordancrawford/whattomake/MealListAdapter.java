@@ -20,10 +20,12 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
      * Define a ViewHolder that keeps track of view fields for meals.
      */
     public class MealViewHolder extends RecyclerView.ViewHolder {
-        public TextView view;
-        public MealViewHolder(TextView view) {
+        public TextView mealCardName;
+        public MealViewHolder(View view) {
             super(view);
-            this.view = view;
+
+            // Get the text view from insight the inflatedView.
+            this.mealCardName = (TextView)view.findViewById(R.id.meal_card_name);
         }
     }
 
@@ -39,10 +41,7 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
         // Create a view to display the meal.
         View inflatedView = LayoutInflater.from(parent.getContext()).inflate(R.layout.meal_card, parent, false);
 
-        // Get the text view from insight the inflatedView.
-        TextView mealCardName = (TextView)inflatedView.findViewById(R.id.meal_card_name);
-
-        return new MealViewHolder(mealCardName);
+        return new MealViewHolder(inflatedView);
     }
 
     /**
@@ -57,7 +56,7 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
         String currentItem = strings[position];
 
         // Setup the view holder with the data.
-        holder.view.setText(currentItem);
+        holder.mealCardName.setText(currentItem);
     }
 
     /**
