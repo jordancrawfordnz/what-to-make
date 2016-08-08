@@ -3,6 +3,7 @@ package kiwi.jordancrawford.whattomake;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MealDetailActivity extends AppCompatActivity {
@@ -22,6 +23,14 @@ public class MealDetailActivity extends AppCompatActivity {
 
         TextView mealDescriptionView = (TextView)findViewById(R.id.meal_detail_description);
         mealDescriptionView.setText((meal.getDescription()));
+
+        ImageView mealPictureView = (ImageView)findViewById(R.id.meal_detail_picture);
+        Integer drawableId = getResources().getIdentifier(meal.getPictureResourceName(), "drawable", getPackageName());
+
+        // Only show images if one exists.
+        if (drawableId != null) {
+            mealPictureView.setImageResource(drawableId);
+        }
 
     }
 }

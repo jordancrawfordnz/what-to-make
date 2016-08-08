@@ -16,11 +16,12 @@ import java.util.ArrayList;
 /**
  * Created by Jordan on 8/08/16.
  */
-public class SampleData {
+public class SampleDataHelper {
     public static Meal buildMealFromJSON(JSONObject jsonMeal) throws JSONException {
         Meal meal = new Meal();
         meal.setName(jsonMeal.getString("name"));
         meal.setDescription(jsonMeal.getString("description"));
+        meal.setPictureResourceName(jsonMeal.getString("picture"));
         return meal;
     }
 

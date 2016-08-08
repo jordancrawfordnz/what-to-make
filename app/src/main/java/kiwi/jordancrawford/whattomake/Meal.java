@@ -6,8 +6,7 @@ import java.io.Serializable;
  * Created by Jordan on 8/08/16.
  */
 public class Meal implements Serializable {
-    String name, description;
-    // TODO: Picture
+    String name, description, pictureResourceName;
 
     public Meal() {
 
@@ -29,11 +28,22 @@ public class Meal implements Serializable {
         this.description = description;
     }
 
+
+    public String getPictureResourceName() {
+        return pictureResourceName;
+    }
+
+    public void setPictureResourceName(String pictureResourceName) {
+        this.pictureResourceName = pictureResourceName;
+    }
+
     @Override
     public String toString() {
         return "Meal{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", pictureResourceName='" + pictureResourceName + '\'' +
                 '}';
     }
+
 }

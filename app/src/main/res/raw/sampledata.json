@@ -1,10 +1,91 @@
 [
     {
-      "name" : "Cake",
-      "description" : "A cakeish meal"
+      "name" : "Carrot-and-Black Bean Crispy Tacos",
+      "description" : "Dig into vegetarian tacos with tons of fresh flavor.",
+      "source" : "http://www.countryliving.com/food-drinks/recipes/a39363/carrot-and-black-bean-crispy-tacos-recipe/",
+      "steps" : [
+        "Preheat oven to 450 degrees F. Heat 1 1/2 tablespoons oil in a medium saucepan over medium-high heat. Add onion and pepper and cook, stirring occasionally, until tender, 4to 6 minutes. Add chili powder and cook, stirring, until fragrant, 30 seconds. Add black beans and 1/3 cup water. Reduce heat to medium-low and cook, stirring occasionally, until thickened, 4 to 6 minutes. Mash beans with the back of the spoon until thick. Stir in lime juice. Season with salt and pepper.",
+        "Meanwhile, toss carrots with cumin and 1 1/2 tablespoons oil on a rimmed baking sheet. Season with salt and pepper. Roast, turning once, until just tender, 10 to 12 minutes.",
+        "Divide beans and carrots between taco shells. Top with avocado, queso fresco, cilantro, and radishes. Serve with lime wedges alongside."
+      ],
+      "ingredients" : [
+        "onion",
+        "black beans",
+        "carrots",
+        "taco shells"
+      ],
+      "picture" : "meal1"
     },
     {
-      "name" : "Pie",
-      "description" : "A pie like substance for substinance"
-    }
+      "name" : "Turkey Meatballs Over Zucchini Noodles",
+      "description" : "Lighten up spaghetti night with lean turkey meat and fresh 'zoodles.'",
+      "source" : "http://www.countryliving.com/food-drinks/recipes/a39371/turkey-meatballs-over-zucchini-noodles-recipe/",
+      "steps" : [
+        "Combine turkey, breadcrumbs, egg, parsley, Parmesan, 1 garlic clove, and 1/2 teaspoon each salt and pepper in a bowl. Form into 12 (1 1/2' to 2') meatballs.",
+        "Heat 1 tablespoon oil in a large skillet over medium heat. Add meatballs and cook, turning occasionally, until brown on all sides, 4 to 6 minutes. Reduce heat to medium-low and gently stir in marinara. Simmer, turning meatballs occasionally, until meatballs are cooked through and sauce is thickened, 14 to 16 minutes.",
+        "Meanwhile, heat remaining tablespoon oil in a medium skillet over medium-high heat. Add zucchini and remaining garlic and cook until just tender and heated through, 2 to 3 minutes. Season with salt and pepper.",
+        "Heat broiler to high with rack in the top position. Sprinkle provolone over meatballs. Broil until cheese is golden brown, 3 to 4 minutes.",
+        "Serve meatballs over noodles topped with Parmesan."
+      ],
+      "ingredients" : [
+        "turkey",
+        "breadcrumbs",
+        "egg",
+        "cheese",
+        "noodles"
+      ],
+      "picture" : "meal2"
+    },
+  {
+    "name" : "Cherry-Prosciutto Grilled Pizzas",
+    "description" : "These crispy flatbreads achieve the perfect combo of salty, tangy and sweet in every bite.",
+    "source" : "http://www.countryliving.com/food-drinks/recipes/a38953/cherry-prosciutto-grilled-pizzas-recipe/",
+    "steps" : [
+      "Heat grill to medium-high set up for indirect grilling.",
+      "With oiled hands, stretch dough into four (6'-x-8') ovals. Place on a baking sheet. Brush both sides of dough with 2 tablespoons oil, dividing evenly. Season with salt and pepper.",
+      "Clean and oil grill grates. Place as many pieces of dough as will fit onto grates, over indirect heat. Grill, covered, until grill marks appear, 1 to 2 minutes.",
+      "Turn dough and top with scallions, cheese, cherries, and prosciutto, dividing evenly. Grill, covered, until cheese melts and dough is cooked through, 3 to 5 minutes. Repeat with remaining dough and toppings, if necessary.",
+      "Toss together arugula, basil, vinegar, and remaining 1 tablespoon oil. Season with salt and pepper.",
+      "Top pizza with arugula mixture. Serve immediately."
+    ],
+    "ingredients" : [
+      "pizza dough",
+      "scallions",
+      "cheese"
+    ],
+    "picture" : "meal3"
+  },
+  {
+    "name" : "Stuffed Chicken 4 Ways",
+    "description" : "Give the weeknight staple an overhaul by stuffing it with one of these combos.",
+    "source" : "http://www.countryliving.com/food-drinks/recipes/a39374/stuffed-chicken-4-ways-recipe/",
+    "steps" : [
+      "Starting at the top of the thickest portion, using a paring knife, cut a 2'-x-4' pocket into the chicken breasts.",
+      "Stuff with the filling combination of your choice, dividing evenly.",
+      "Season with salt and pepper.",
+      "Heat 1 tablespoon olive oil in a large skillet over medium heat. Cook until an instant-read thermometer inserted in the thickest portion reaches 165 degrees F, 6 to 7 minutes per side."
+    ],
+    "ingredients" : [
+      "almonds",
+      "chicken"
+    ],
+    "picture": "meal4"
+  },
+  {
+    "name" : "Chili-Garlic Grilled Chicken with Avocado-Cherry Salsa",
+    "description" : "Grilled chicken gets a lift with this flavor-packed marinade and fresh, fruity salsa.",
+    "source" : "http://www.countryliving.com/food-drinks/recipes/a38958/chili-garlic-grilled-chicken-with-avocado-cherry-salsa-recipe/",
+    "steps" : [
+      "Combine garlic, chili powder, 3 tablespoons oil, lime zest and 2 tablespoons juice, 1 1/2 teaspoons salt, and 1/2 teaspoon pepper in a large zip-top bag. Add chicken, seal, and turn to coat. Marinate, in the refrigerator, 30 minutes and up to 2 hours.",
+      "Meanwhile, combine cherries, shallot, jalapeño, cilantro, remaining 1 tablespoon oil, and remaining 2 tablespoons lime juice in a bowl. Season with salt and pepper. Let stand 15 minutes. Fold in avocado.",
+      "Heat grill to medium-high. Remove chicken from marinade and pat dry with paper towels. Season with salt and pepper. Grill over direct heat, covered, until internal temperature reaches 165 degrees F, 6 to 8 minutes per side. Let stand 5 minutes.",
+      "Serve with salsa and lime wedges."
+    ],
+    "ingredients" : [
+      "garlic",
+      "chicken",
+      "avocado"
+    ],
+    "picture" : "meal5"
+  }
 ]
