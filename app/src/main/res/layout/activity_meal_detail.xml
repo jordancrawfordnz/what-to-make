@@ -22,19 +22,19 @@
 
             <android.support.v7.widget.AppCompatImageView
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="@dimen/meal_detail_picture_height"
                 android:id="@+id/meal_detail_picture"/>
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/meal_detail_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/meal_detail_name_size"/>
 
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/meal_detail_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/step_list_recycler_view"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
         </android.support.v7.widget.LinearLayoutCompat>
 

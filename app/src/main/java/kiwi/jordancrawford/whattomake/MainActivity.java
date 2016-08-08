@@ -2,6 +2,7 @@ package kiwi.jordancrawford.whattomake;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.content.Intent;
@@ -46,13 +47,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Find the recycler view.
-        recyclerView = (RecyclerView) findViewById(R.id.list_recycler_view);
+        recyclerView = (RecyclerView) findViewById(R.id.meal_list_recycler_view);
 
         // Setup a linear layout manager.
-        recyclerViewLayoutManager = new LinearLayoutManager(this);
+        recyclerViewLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(recyclerViewLayoutManager);
 
-        recyclerViewAdapter = new MealListAdapter(meals, new OnMealClickListener(this));
+        recyclerViewAdapter = new MealListAdapter(this.getApplicationContext(), meals, new OnMealClickListener(this));
         recyclerView.setAdapter(recyclerViewAdapter);
     }
 }

@@ -1,14 +1,19 @@
 package kiwi.jordancrawford.whattomake;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MealDetailActivity extends AppCompatActivity {
-
     public static final String INTENT_MEAL_KEY = "kiwi.jordancrawford.whattomake.intent_meal";
+    private RecyclerView stepsRecyclerView;
+    private RecyclerView.Adapter stepsRecyclerViewAdapter;
+    private RecyclerView.LayoutManager stepsRecyclerViewLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,9 +22,6 @@ public class MealDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Meal meal = (Meal) intent.getSerializableExtra(INTENT_MEAL_KEY);
-
-        TextView mealNameView = (TextView)findViewById(R.id.meal_detail_name);
-        mealNameView.setText(meal.getName());
 
         TextView mealDescriptionView = (TextView)findViewById(R.id.meal_detail_description);
         mealDescriptionView.setText((meal.getDescription()));
@@ -32,5 +34,20 @@ public class MealDetailActivity extends AppCompatActivity {
             mealPictureView.setImageResource(drawableId);
         }
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(meal.getName());
+
+        // Find the recycler view.
+        stepsRecyclerView = (RecyclerView) findViewById(R.id.step_list_recycler_view);
+
+        // Setup a linear layout manager.
+        stepsRecyclerViewLayoutManager = new LinearLayoutManager(this);
+        stepsRecyclerView.setLayoutManager(stepsRecyclerViewLayoutManager);
+
+        String[] array = new String[2];
+        array[0] = "something";
+        array[1] = "something else";
+        stepsRecyclerViewAdapter = new RecipeStepsListAdapter(array);
+        stepsRecyclerView.setAdapter(stepsRecyclerViewAdapter);
     }
 }

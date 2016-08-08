@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     >
     <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/meal_card_width"
         android:layout_height="fill_parent"
         android:layout_margin="@dimen/meal_card_margin"
         card_view:contentPadding="@dimen/meal_card_content_padding">
@@ -15,6 +15,11 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/meal_card_picture"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/meal_card_picture_height" />
 
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/meal_card_name"

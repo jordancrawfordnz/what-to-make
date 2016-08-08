@@ -1,9 +1,11 @@
 package kiwi.jordancrawford.whattomake;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,9 +16,11 @@ import java.util.ArrayList;
 public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealViewHolder> {
     ArrayList<Meal> meals;
     OnClickListener<Meal> onClickListener;
-    public MealListAdapter(ArrayList<Meal> meals, OnClickListener<Meal> onClickListener) {
+    Context context;
+    public MealListAdapter(Context context, ArrayList<Meal> meals, OnClickListener<Meal> onClickListener) {
         this.meals = meals;
         this.onClickListener = onClickListener;
+        this.context = context;
     }
 
     /**
@@ -25,6 +29,7 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
     public class MealViewHolder extends RecyclerView.ViewHolder {
         public View view;
         public TextView mealCardName, mealCardDescription;
+        public ImageView mealCardPicture;
         public MealViewHolder(View view) {
             super(view);
             this.view = view;
@@ -32,12 +37,14 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
             // Get the text view from insight the inflatedView.
             this.mealCardName = (TextView)view.findViewById(R.id.meal_card_name);
             this.mealCardDescription = (TextView)view.findViewById(R.id.meal_card_description);
+            this.mealCardPicture = (ImageView)view.findViewById(R.id.meal_card_picture);
         }
 
         public void setupView(final Meal meal) {
             // Setup the view.
             mealCardName.setText(meal.getName());
             mealCardDescription.setText(meal.getDescription());
+            mealCardPicture.setImageResource(context.getResources().getIdentifier(meal.getPictureResourceName() + "_small", "drawable", context.getPackageName()));
 
             // Setup a click listener for this view.
             view.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +66,6 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
     public MealViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // Create a view to display the meal.
         View inflatedView = LayoutInflater.from(parent.getContext()).inflate(R.layout.meal_card, parent, false);
-
         return new MealViewHolder(inflatedView);
     }
 
