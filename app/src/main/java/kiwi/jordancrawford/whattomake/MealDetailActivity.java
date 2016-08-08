@@ -44,10 +44,7 @@ public class MealDetailActivity extends AppCompatActivity {
         stepsRecyclerViewLayoutManager = new LinearLayoutManager(this);
         stepsRecyclerView.setLayoutManager(stepsRecyclerViewLayoutManager);
 
-        String[] array = new String[2];
-        array[0] = "something";
-        array[1] = "something else";
-        stepsRecyclerViewAdapter = new RecipeStepsListAdapter(array);
+        stepsRecyclerViewAdapter = new RecipeStepsListAdapter(meal.getSteps());
         stepsRecyclerView.setAdapter(stepsRecyclerViewAdapter);
     }
 }

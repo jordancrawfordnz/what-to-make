@@ -24,6 +24,12 @@ public class SampleDataHelper {
         meal.setName(jsonMeal.getString("name"));
         meal.setDescription(jsonMeal.getString("description"));
         meal.setPictureResourceName(jsonMeal.getString("picture"));
+        JSONArray jsonSteps = jsonMeal.getJSONArray("steps");
+        String[] steps = new String[jsonSteps.length()];
+        for (int currentStepIndex = 0; currentStepIndex < jsonSteps.length(); currentStepIndex++) {
+            steps[currentStepIndex] = jsonSteps.getString(currentStepIndex);
+        }
+        meal.setSteps(steps);
         return meal;
     }
 

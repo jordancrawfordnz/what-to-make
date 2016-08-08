@@ -30,7 +30,7 @@ public class RecipeStepsListAdapter extends RecyclerView.Adapter<RecipeStepsList
         }
 
         public void setupStep(int index, String step) {
-            this.stepNumber.setText(index+1);
+            this.stepNumber.setText(String.valueOf(index+1));
             this.stepInstruction.setText(step);
         }
     }
