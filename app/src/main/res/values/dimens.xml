@@ -5,4 +5,5 @@
     <dimen name="meal_card_margin">10dp</dimen>
     <dimen name="meal_card_height">100dp</dimen>
     <dimen name="meal_card_content_padding">10dp</dimen>
+    <dimen name="meal_name_size">20dp</dimen>
 </resources>

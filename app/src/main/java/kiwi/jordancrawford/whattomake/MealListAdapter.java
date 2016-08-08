@@ -6,26 +6,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by Jordan on 4/08/16.
  */
 public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealViewHolder> {
-    String[] strings;
-    public MealListAdapter(String[] strings) {
-        // TODO: Switch to Meals.
-        this.strings = strings;
+    ArrayList<Meal> meals;
+    public MealListAdapter(ArrayList<Meal> meals) {
+        this.meals = meals;
     }
 
     /**
      * Define a ViewHolder that keeps track of view fields for meals.
      */
     public class MealViewHolder extends RecyclerView.ViewHolder {
-        public TextView mealCardName;
+        public TextView mealCardName, mealCardDescription;
         public MealViewHolder(View view) {
             super(view);
 
             // Get the text view from insight the inflatedView.
             this.mealCardName = (TextView)view.findViewById(R.id.meal_card_name);
+            this.mealCardDescription = (TextView)view.findViewById(R.id.meal_card_description);
         }
     }
 
@@ -53,10 +55,11 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
     @Override
     public void onBindViewHolder(MealViewHolder holder, int position) {
         // Get the item for this index.
-        String currentItem = strings[position];
+        Meal currentMeal = meals.get(position);
 
         // Setup the view holder with the data.
-        holder.mealCardName.setText(currentItem);
+        holder.mealCardName.setText(currentMeal.getName());
+        holder.mealCardDescription.setText(currentMeal.getDescription());
     }
 
     /**
@@ -65,6 +68,6 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
      */
     @Override
     public int getItemCount() {
-        return strings.length;
+        return meals.size();
     }
 }
