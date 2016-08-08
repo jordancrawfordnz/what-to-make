@@ -19,16 +19,33 @@ import java.util.ArrayList;
  * Created by Jordan on 8/08/16.
  */
 public class SampleDataHelper {
+        // TODO: Put this somewhere nicer.
+    public static ArrayList<String> allIngredients = new ArrayList<>();
+
     public static Meal buildMealFromJSON(JSONObject jsonMeal) throws JSONException {
         Meal meal = new Meal();
         meal.setName(jsonMeal.getString("name"));
         meal.setDescription(jsonMeal.getString("description"));
         meal.setPictureResourceName(jsonMeal.getString("picture"));
+
+        // Populate the steps.
         JSONArray jsonSteps = jsonMeal.getJSONArray("steps");
         String[] steps = new String[jsonSteps.length()];
         for (int currentStepIndex = 0; currentStepIndex < jsonSteps.length(); currentStepIndex++) {
             steps[currentStepIndex] = jsonSteps.getString(currentStepIndex);
         }
+
+        // Populate the ingredients.
+        JSONArray jsonIngredients = jsonMeal.getJSONArray("ingredients");
+        String[] ingredients = new String[jsonIngredients.length()];
+        for (int currentIngredientIndex = 0; currentIngredientIndex < jsonIngredients.length(); currentIngredientIndex++) {
+            String currentIngredient = jsonIngredients.getString(currentIngredientIndex);
+            ingredients[currentIngredientIndex] = currentIngredient;
+            if (!allIngredients.contains(currentIngredient)) {
+                allIngredients.add(currentIngredient);
+            }
+        }
+
         meal.setSteps(steps);
         return meal;
     }
@@ -58,6 +75,8 @@ public class SampleDataHelper {
             meals.add(buildMealFromJSON((jsonMeal)));
         }
 
+        System.out.println("all ingredients");
+        System.out.println(allIngredients);
         return meals;
     }
 

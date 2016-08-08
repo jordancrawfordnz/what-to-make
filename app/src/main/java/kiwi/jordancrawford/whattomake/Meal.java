@@ -8,7 +8,7 @@ import java.util.Arrays;
  */
 public class Meal implements Serializable {
     String name, description, pictureResourceName;
-    String[] steps;
+    String[] steps, ingredients;
 
     public Meal() {
 
@@ -38,6 +38,14 @@ public class Meal implements Serializable {
         this.steps = steps;
     }
 
+    public String[] getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String[] ingredients) {
+        this.ingredients = ingredients;
+    }
+
     public String getPictureResourceName() {
         return pictureResourceName;
     }
@@ -53,6 +61,7 @@ public class Meal implements Serializable {
                 ", description='" + description + '\'' +
                 ", pictureResourceName='" + pictureResourceName + '\'' +
                 ", steps=" + Arrays.toString(steps) +
+                ", ingredients=" + Arrays.toString(ingredients) +
                 '}';
     }
 
