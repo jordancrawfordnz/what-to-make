@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
+import android.content.Intent;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,47 +25,25 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter recyclerViewAdapter;
     private RecyclerView.LayoutManager recyclerViewLayoutManager;
 
-    private Meal buildMealFromJSON(JSONObject jsonMeal) throws JSONException {
-        Meal meal = new Meal();
-        meal.setName(jsonMeal.getString("name"));
-        meal.setDescription(jsonMeal.getString("description"));
-        return meal;
-    }
-
-    private ArrayList<Meal> getSampleData() throws IOException, JSONException {
-        // Read from the JSON file.
-        InputStream jsonInput = getResources().openRawResource(R.raw.sampledata);
-        Reader reader = new BufferedReader(new InputStreamReader(jsonInput));
-        Writer writer = new StringWriter();
-        char[] buffer = new char[1024];
-
-        int inputSize;
-        try {
-            // While there is something to read, read to the buffer.
-            while((inputSize = reader.read(buffer)) != -1) {
-                writer.write(buffer, 0, inputSize);
-            }
-        } finally {
-            jsonInput.close();
-        }
-        String inputString = writer.toString();
-
-        // Parse the JSON and build Meals from JSON.
-        ArrayList<Meal> meals = new ArrayList<>();
-        JSONArray jsonMeals = new JSONArray(inputString);
-        for (int mealIndex = 0; mealIndex < jsonMeals.length(); mealIndex++) {
-            JSONObject jsonMeal = jsonMeals.getJSONObject(mealIndex);
-            meals.add(buildMealFromJSON((jsonMeal)));
+    private class OnMealClickListener implements OnClickListener<Meal> {
+        MainActivity activityInstance;
+        public OnMealClickListener(MainActivity activityInstance) {
+            this.activityInstance = activityInstance;
         }
 
-        return meals;
+        @Override
+        public void onItemClick(Meal item) {
+            Intent intent = new Intent(activityInstance, MealDetailActivity.class);
+            intent.putExtra(MealDetailActivity.INTENT_MEAL_KEY, item);
+            startActivity(intent);
+        }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ArrayList<Meal> meals;
         try {
-            meals = getSampleData();
+            meals = SampleData.getSampleData(getResources().openRawResource(R.raw.sampledata));
         } catch(IOException exception) {
             System.out.println("Could not read the sample data.");
             return;
@@ -81,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(recyclerViewLayoutManager);
 
-        recyclerViewAdapter = new MealListAdapter(meals);
+        recyclerViewAdapter = new MealListAdapter(meals, new OnMealClickListener(this));
         recyclerView.setAdapter(recyclerViewAdapter);
     }
 }

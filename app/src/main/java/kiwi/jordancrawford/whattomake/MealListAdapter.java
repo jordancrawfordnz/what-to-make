@@ -13,21 +13,38 @@ import java.util.ArrayList;
  */
 public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealViewHolder> {
     ArrayList<Meal> meals;
-    public MealListAdapter(ArrayList<Meal> meals) {
+    OnClickListener<Meal> onClickListener;
+    public MealListAdapter(ArrayList<Meal> meals, OnClickListener<Meal> onClickListener) {
         this.meals = meals;
+        this.onClickListener = onClickListener;
     }
 
     /**
      * Define a ViewHolder that keeps track of view fields for meals.
      */
     public class MealViewHolder extends RecyclerView.ViewHolder {
+        public View view;
         public TextView mealCardName, mealCardDescription;
         public MealViewHolder(View view) {
             super(view);
+            this.view = view;
 
             // Get the text view from insight the inflatedView.
             this.mealCardName = (TextView)view.findViewById(R.id.meal_card_name);
             this.mealCardDescription = (TextView)view.findViewById(R.id.meal_card_description);
+        }
+
+        public void setupView(final Meal meal) {
+            // Setup the view.
+            mealCardName.setText(meal.getName());
+            mealCardDescription.setText(meal.getDescription());
+
+            // Setup a click listener for this view.
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View view) {
+                    onClickListener.onItemClick(meal);
+                }
+            });
         }
     }
 
@@ -58,8 +75,7 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
         Meal currentMeal = meals.get(position);
 
         // Setup the view holder with the data.
-        holder.mealCardName.setText(currentMeal.getName());
-        holder.mealCardDescription.setText(currentMeal.getDescription());
+        holder.setupView(currentMeal);
     }
 
     /**

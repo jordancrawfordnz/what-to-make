@@ -1,9 +1,11 @@
 package kiwi.jordancrawford.whattomake;
 
+import java.io.Serializable;
+
 /**
  * Created by Jordan on 8/08/16.
  */
-public class Meal {
+public class Meal implements Serializable {
     String name, description;
     // TODO: Picture
 

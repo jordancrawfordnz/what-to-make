@@ -19,7 +19,7 @@
                 android:id="@+id/meal_card_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/meal_name_size" />
+                android:textSize="@dimen/meal_card_name_size" />
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/meal_card_description"
                 android:layout_width="match_parent"
