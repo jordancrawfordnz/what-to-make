@@ -1,11 +1,14 @@
 package kiwi.jordancrawford.whattomake;
 
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.content.Intent;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import org.json.JSONException;
 
@@ -45,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Setup the ingredient list.
+        ListView ingredientListView = (ListView)findViewById(R.id.ingredient_drawer);
+        ingredientListView.setAdapter(new ArrayAdapter<String>(this, R.layout.ingredient_drawer_item, R.id.ingredient_drawer_item_name, SampleDataHelper.allIngredients));
+
 
         // Find the recycler view.
         recyclerView = (RecyclerView) findViewById(R.id.meal_list_recycler_view);
