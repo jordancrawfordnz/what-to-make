@@ -15,4 +15,6 @@
     <dimen name="meal_card_picture_height">200dp</dimen>
     <dimen name="meal_card_width">200dp</dimen>
     <dimen name="meal_detail_picture_height">300dp</dimen>
+    <dimen name="meal_detail_ingredient_header_vert_padding">5dp</dimen>
+    <dimen name="meal_detail_steps_header_vert_padding">5dp</dimen>
 </resources>

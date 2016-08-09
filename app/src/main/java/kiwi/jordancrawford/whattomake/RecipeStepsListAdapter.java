@@ -37,7 +37,7 @@ public class RecipeStepsListAdapter extends RecyclerView.Adapter<RecipeStepsList
 
     @Override
     public RecipeStepViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // Create a view to display the meal.
+        // Create a view to display the recipe step.
         View inflatedView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_step, parent, false);
         return new RecipeStepViewHolder(inflatedView);
     }

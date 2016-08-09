@@ -46,6 +46,7 @@ public class SampleDataHelper {
             }
         }
 
+        meal.setIngredients(ingredients);
         meal.setSteps(steps);
         return meal;
     }
