@@ -3,6 +3,7 @@ package kiwi.jordancrawford.whattomake;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -39,9 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ArrayList<Meal> meals;
+        final ArrayList<Meal> meals;
         try {
+            // TODO: Don't do this here!
             meals = SampleDataHelper.getSampleData(getResources().openRawResource(R.raw.sampledata));
+            Collections.sort(meals);
         } catch(IOException exception) {
             System.out.println("Could not read the sample data.");
             return;
@@ -63,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
                 Ingredient ingredient = SampleDataHelper.allIngredients.get(i);
                 ingredient.setAvaliable(!ingredient.isAvaliable());
                 ingredientChosenCheckbox.setChecked(ingredient.isAvaliable());
+                Collections.sort(meals);
+
+                // Using this method to notify of data changes shows an animation.
+                    // Ideally this would determine which items need to move, but for now just animate all of them.
+                recyclerViewAdapter.notifyItemRangeChanged(0, meals.size());
             }
         });
 
@@ -72,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
         // Setup a linear layout manager.
         recyclerViewLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(recyclerViewLayoutManager);
-
         recyclerViewAdapter = new MealListAdapter(this.getApplicationContext(), meals, new OnMealClickListener(this));
         recyclerView.setAdapter(recyclerViewAdapter);
     }

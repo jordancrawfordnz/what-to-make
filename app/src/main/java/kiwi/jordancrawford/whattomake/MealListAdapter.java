@@ -28,7 +28,7 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
      */
     public class MealViewHolder extends RecyclerView.ViewHolder {
         public View view;
-        public TextView mealCardName, mealCardDescription;
+        public TextView mealCardName, mealCardDescription, mealCardIngredientCount;
         public ImageView mealCardPicture;
         public MealViewHolder(View view) {
             super(view);
@@ -37,6 +37,7 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
             // Get the text view from insight the inflatedView.
             this.mealCardName = (TextView)view.findViewById(R.id.meal_card_name);
             this.mealCardDescription = (TextView)view.findViewById(R.id.meal_card_description);
+            this.mealCardIngredientCount = (TextView)view.findViewById(R.id.meal_card_ingredient_count);
             this.mealCardPicture = (ImageView)view.findViewById(R.id.meal_card_picture);
         }
 
@@ -44,6 +45,8 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
             // Setup the view.
             mealCardName.setText(meal.getName());
             mealCardDescription.setText(meal.getDescription());
+            mealCardIngredientCount.setText(meal.getNumberOfAvaliableIngredients() + "/" + meal.getIngredients().size());
+
             mealCardPicture.setImageResource(context.getResources().getIdentifier(meal.getPictureResourceName() + "_small", "drawable", context.getPackageName()));
 
             // Setup a click listener for this view.
