@@ -21,6 +21,7 @@ public class MealDetailActivity extends AppCompatActivity implements MealDetailF
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(meal.getName());
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         // Setup a fragment to display the meal detail.
         FragmentManager fragmentManager = getSupportFragmentManager();

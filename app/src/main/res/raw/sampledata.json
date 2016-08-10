@@ -9,10 +9,10 @@
         "Divide beans and carrots between taco shells. Top with avocado, queso fresco, cilantro, and radishes. Serve with lime wedges alongside."
       ],
       "ingredients" : [
-        "onion",
-        "black beans",
-        "carrots",
-        "taco shells"
+        "Onion",
+        "Black beans",
+        "Carrots",
+        "Taco shells"
       ],
       "picture" : "meal1"
     },
@@ -28,11 +28,11 @@
         "Serve meatballs over noodles topped with Parmesan."
       ],
       "ingredients" : [
-        "turkey",
-        "breadcrumbs",
-        "egg",
-        "cheese",
-        "noodles"
+        "Turkey",
+        "Breadcrumbs",
+        "Egg",
+        "Cheese",
+        "Noodles"
       ],
       "picture" : "meal2"
     },
@@ -49,9 +49,9 @@
       "Top pizza with arugula mixture. Serve immediately."
     ],
     "ingredients" : [
-      "pizza dough",
-      "scallions",
-      "cheese"
+      "Pizza dough",
+      "Scallions",
+      "Cheese"
     ],
     "picture" : "meal3"
   },
@@ -66,8 +66,8 @@
       "Heat 1 tablespoon olive oil in a large skillet over medium heat. Cook until an instant-read thermometer inserted in the thickest portion reaches 165 degrees F, 6 to 7 minutes per side."
     ],
     "ingredients" : [
-      "almonds",
-      "chicken"
+      "Almonds",
+      "Chicken"
     ],
     "picture": "meal4"
   },
@@ -82,9 +82,9 @@
       "Serve with salsa and lime wedges."
     ],
     "ingredients" : [
-      "garlic",
-      "chicken",
-      "avocado"
+      "Garlic",
+      "Chicken",
+      "Avocado"
     ],
     "picture" : "meal5"
   }

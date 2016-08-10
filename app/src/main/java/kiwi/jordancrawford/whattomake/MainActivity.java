@@ -1,5 +1,6 @@
 package kiwi.jordancrawford.whattomake;
 
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter recyclerViewAdapter;
     private RecyclerView.LayoutManager recyclerViewLayoutManager;
+    private DrawerLayout drawerLayout;
+
+    private final int DRAWER_GRAVITY = GravityCompat.END;
 
     private class OnMealClickListener implements OnClickListener<Meal> {
         MainActivity activityInstance;
@@ -36,6 +43,30 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(activityInstance, MealDetailActivity.class);
             intent.putExtra(MealDetailActivity.INTENT_MEAL_KEY, item);
             startActivity(intent);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+
+        inflater.inflate(R.menu.main_activity_bar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_open_my_ingredients: {
+                if (drawerLayout.isDrawerOpen(DRAWER_GRAVITY)) {
+                    drawerLayout.closeDrawer(DRAWER_GRAVITY);
+                } else {
+                    drawerLayout.openDrawer(DRAWER_GRAVITY);
+                }
+                return true;
+            }
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
@@ -55,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        drawerLayout = (DrawerLayout)findViewById(R.id.ingredient_drawer_layout);
 
         // Setup the ingredient list.
         ListView ingredientListView = (ListView)findViewById(R.id.ingredient_drawer_list);

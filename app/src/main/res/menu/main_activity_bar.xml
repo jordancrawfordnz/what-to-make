@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="schemas.android.com/tools"
+    tools:context="kiwi.jordancrawford.whattomake.MainActivity"
+    xmlns:whattomake="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_open_my_ingredients"
+        android:title="@string/my_ingredients"
+        android:icon="@drawable/ic_ingredients"
+        whattomake:showAsAction="always" />
+</menu>
