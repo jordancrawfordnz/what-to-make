@@ -25,9 +25,11 @@ public class MealDetailActivity extends AppCompatActivity implements MealDetailF
 
         // Setup a fragment to display the meal detail.
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment fragment = (Fragment)MealDetailFragment.newInstance(meal);
-        fragmentTransaction.add(R.id.meal_detail_fragment_container, fragment);
-        fragmentTransaction.commit();
+        if (fragmentManager.findFragmentById(R.id.meal_detail_fragment_container) == null) {
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            Fragment fragment = (Fragment)MealDetailFragment.newInstance(meal);
+            fragmentTransaction.add(R.id.meal_detail_fragment_container, fragment);
+            fragmentTransaction.commit();
+        }
     }
 }
