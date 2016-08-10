@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
-    android:id="@+id/ingredient_drawer_layout"
+<android.support.v4.widget.DrawerLayout android:id="@+id/ingredient_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -22,25 +21,11 @@
     </FrameLayout>
 
     <!-- Ingredients drawer -->
-    <LinearLayout
-        android:orientation="vertical"
-        android:id="@+id/ingredient_drawer"
+    <ListView android:id="@+id/ingredient_drawer_list"
+        android:layout_width="240dp"
         android:layout_height="match_parent"
-        android:gravity="end"
-        android:background="#FFF"
-        android:layout_width="240dp">
-
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello drawer!"
-            android:id="@+id/ingredient_drawer_title"/>
-
-        <ListView android:id="@+id/ingredient_drawer_list"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:choiceMode="multipleChoice"/>
-
-    </LinearLayout>
+        android:layout_gravity="right"
+        android:choiceMode="multipleChoice"
+        android:background="#FFF"/>
 
 </android.support.v4.widget.DrawerLayout>
