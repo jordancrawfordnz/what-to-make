@@ -7,7 +7,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ListView;
 
 import org.json.JSONException;
@@ -50,9 +53,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Setup the ingredient list.
-        ListView ingredientListView = (ListView)findViewById(R.id.ingredient_drawer);
-        ingredientListView.setAdapter(new ArrayAdapter<String>(this, R.layout.ingredient_drawer_item, R.id.ingredient_drawer_item_name, SampleDataHelper.allIngredients));
+        ListView ingredientListView = (ListView)findViewById(R.id.ingredient_drawer_list);
+        ingredientListView.setAdapter(new MyIngredientsListAdapter(this, R.layout.ingredient_drawer_item, SampleDataHelper.allIngredients));
 
+        ingredientListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                CheckBox ingredientChosenCheckbox = (CheckBox) view.findViewById(R.id.ingredient_drawer_item_checkbox);
+                Ingredient ingredient = SampleDataHelper.allIngredients.get(i);
+                ingredient.setAvaliable(!ingredient.isAvaliable());
+                ingredientChosenCheckbox.setChecked(ingredient.isAvaliable());
+            }
+        });
 
         // Find the recycler view.
         recyclerView = (RecyclerView) findViewById(R.id.meal_list_recycler_view);

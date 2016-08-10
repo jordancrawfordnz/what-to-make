@@ -20,7 +20,7 @@ import java.util.ArrayList;
  */
 public class SampleDataHelper {
         // TODO: Put this somewhere nicer.
-    public static ArrayList<String> allIngredients = new ArrayList<>();
+    public static ArrayList<Ingredient> allIngredients = new ArrayList<>();
 
     public static Meal buildMealFromJSON(JSONObject jsonMeal) throws JSONException {
         Meal meal = new Meal();
@@ -37,13 +37,23 @@ public class SampleDataHelper {
 
         // Populate the ingredients.
         JSONArray jsonIngredients = jsonMeal.getJSONArray("ingredients");
-        String[] ingredients = new String[jsonIngredients.length()];
+        ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
         for (int currentIngredientIndex = 0; currentIngredientIndex < jsonIngredients.length(); currentIngredientIndex++) {
-            String currentIngredient = jsonIngredients.getString(currentIngredientIndex);
-            ingredients[currentIngredientIndex] = currentIngredient;
-            if (!allIngredients.contains(currentIngredient)) {
+            String ingredientName = jsonIngredients.getString(currentIngredientIndex);
+            Ingredient currentIngredient = null;
+            for (int currentAllIngredientsIndex = 0; currentAllIngredientsIndex < allIngredients.size(); currentAllIngredientsIndex++) {
+                Ingredient currentAllIngredient = allIngredients.get(currentAllIngredientsIndex);
+                if (ingredientName.equals(currentAllIngredient.getName())) {
+                    currentIngredient = currentAllIngredient;
+                    break;
+                }
+            }
+            if (currentIngredient == null) {
+                currentIngredient = new Ingredient();
+                currentIngredient.setName(jsonIngredients.getString(currentIngredientIndex));
                 allIngredients.add(currentIngredient);
             }
+            ingredients.add(currentIngredient);
         }
 
         meal.setIngredients(ingredients);

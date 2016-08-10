@@ -1,14 +1,16 @@
 package kiwi.jordancrawford.whattomake;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
  * Created by Jordan on 8/08/16.
  */
 public class Meal implements Serializable {
-    String name, description, pictureResourceName;
-    String[] steps, ingredients;
+    private String name, description, pictureResourceName;
+    private String[] steps;
+    private ArrayList<Ingredient> ingredients;
 
     public Meal() {
 
@@ -38,11 +40,11 @@ public class Meal implements Serializable {
         this.steps = steps;
     }
 
-    public String[] getIngredients() {
+    public ArrayList<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(String[] ingredients) {
+    public void setIngredients(ArrayList<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -61,7 +63,7 @@ public class Meal implements Serializable {
                 ", description='" + description + '\'' +
                 ", pictureResourceName='" + pictureResourceName + '\'' +
                 ", steps=" + Arrays.toString(steps) +
-                ", ingredients=" + Arrays.toString(ingredients) +
+                ", ingredients=" + ingredients.toString() +
                 '}';
     }
 
