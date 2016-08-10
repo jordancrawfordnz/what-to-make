@@ -21,11 +21,23 @@
     </FrameLayout>
 
     <!-- Ingredients drawer -->
-    <ListView android:id="@+id/ingredient_drawer_list"
+    <RelativeLayout
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="right"
-        android:choiceMode="multipleChoice"
-        android:background="#FFF"/>
+        android:background="#FFF">
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/ingredient_drawer_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:padding="10dp"
+            android:text="My Ingredients"/>
+        <ListView android:id="@+id/ingredient_drawer_list"
+            android:layout_width="match_parent"
+            android:layout_below="@id/ingredient_drawer_heading"
+            android:layout_height="wrap_content"
+            android:choiceMode="multipleChoice"/>
+    </RelativeLayout>
 
 </android.support.v4.widget.DrawerLayout>
