@@ -9,38 +9,45 @@
     <android.support.v7.widget.CardView
         android:id="@+id/meal_card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/meal_card_margin"
-        card_view:contentPadding="@dimen/meal_card_content_padding">
-        <RelativeLayout
+        android:layout_height="fill_parent"
+        android:layout_margin="@dimen/meal_card_margin">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/meal_card_picture"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/meal_card_picture_height" />
+                android:layout_height="@dimen/meal_card_picture_height"
+                android:scaleType="centerCrop"/>
 
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/meal_card_name"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/meal_card_name_size"
-                android:layout_below="@+id/meal_card_picture"/>
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/meal_card_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/meal_card_name"/>
+                android:layout_height="match_parent"
+                android:padding="@dimen/meal_card_content_padding">
 
-            <!-- TODO: Show an icon for the ingredient count -->
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/meal_card_ingredient_count"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_alignParentBottom="true"/>
-        </RelativeLayout>
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/meal_card_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/meal_card_name_size"/>
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/meal_card_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <!-- TODO: Show an icon for the ingredient count -->
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/meal_card_ingredient_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_alignParentBottom="true"/>
+            </LinearLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>
