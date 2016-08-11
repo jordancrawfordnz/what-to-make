@@ -82,9 +82,12 @@ public class MealDetailFragment extends Fragment {
 
             // Setup data in the view.
             TextView ingredientName = (TextView) inflatedView.findViewById(R.id.recipe_ingredient_name);
-            TextView ingredientAvaliable = (TextView) inflatedView.findViewById(R.id.recipe_ingredient_avaliable);
+            ImageView ingredientAvaliable = (ImageView) inflatedView.findViewById(R.id.recipe_ingredient_avaliable);
             ingredientName.setText(currentIngredient.getName());
-            ingredientAvaliable.setText(currentIngredient.isAvaliable() ? "Avaliable" : "Not avaliable");
+            if (currentIngredient.isAvaliable())
+                ingredientAvaliable.setImageResource(R.drawable.ic_check_circle_black_24dp);
+            else
+                ingredientAvaliable.setImageResource(R.drawable.ic_close_circle_black_24dp);
         }
 
         // Setup a list of recipe steps.
