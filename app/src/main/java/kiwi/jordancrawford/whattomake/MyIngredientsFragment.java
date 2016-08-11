@@ -18,6 +18,8 @@ import java.util.Collections;
  * Displays the list of all ingredients.
  */
 public class MyIngredientsFragment extends Fragment {
+    private MyIngredientsFragment.OnFragmentInteractionListener interactionListener;
+
     public MyIngredientsFragment() {
         // Required empty public constructor
     }
@@ -38,7 +40,7 @@ public class MyIngredientsFragment extends Fragment {
         View inflatedView = inflater.inflate(R.layout.fragment_my_ingredients, container, false);
 
         // Setup the ingredient list.
-        ListView ingredientListView = (ListView)inflatedView.findViewById(R.id.ingredient_drawer_list);
+        final ListView ingredientListView = (ListView)inflatedView.findViewById(R.id.ingredient_drawer_list);
         ingredientListView.setAdapter(new MyIngredientsListAdapter(getContext(), R.layout.ingredient_drawer_item, SampleDataHelper.allIngredients));
 
         ingredientListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -49,13 +51,10 @@ public class MyIngredientsFragment extends Fragment {
                 ingredient.setAvaliable(!ingredient.isAvaliable());
                 ingredientChosenCheckbox.setChecked(ingredient.isAvaliable());
 
-                
-                // TODO: Allow notifying the main view about the ingredient change.
-//                Collections.sort(meals);
-//
-//                // Using this method to notify of data changes shows an animation.
-//                // Ideally this would determine which items need to move, but for now just animate all of them.
-//                recyclerViewAdapter.notifyItemRangeChanged(0, meals.size());
+                // Notify the parent that the ingredients have changed.
+                if (interactionListener != null) {
+                    interactionListener.myIngredientsChanged();
+                }
             }
         });
 
@@ -66,10 +65,21 @@ public class MyIngredientsFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            interactionListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
+        interactionListener = null;
+    }
+
+    public interface OnFragmentInteractionListener {
+        void myIngredientsChanged();
     }
 }

@@ -24,13 +24,23 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MyIngredientsFragment.OnFragmentInteractionListener {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter recyclerViewAdapter;
     private RecyclerView.LayoutManager recyclerViewLayoutManager;
     private DrawerLayout drawerLayout;
 
     private final int DRAWER_GRAVITY = GravityCompat.END;
+
+    @Override
+    public void myIngredientsChanged() {
+        ArrayList<Meal> meals = SampleDataHelper.allMeals;
+        Collections.sort(meals);
+
+        // Using this method to notify of data changes shows an animation.
+        // Ideally this would determine which items need to move, but for now just animate all of them.
+        recyclerViewAdapter.notifyItemRangeChanged(0, meals.size());
+    }
 
     // Setup a listener that opens a meal detail view when it is touched.
     private class OnMealClickListener implements OnClickListener<Meal> {
