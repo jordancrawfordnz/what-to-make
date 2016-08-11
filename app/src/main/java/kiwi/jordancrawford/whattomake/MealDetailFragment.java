@@ -1,16 +1,14 @@
 package kiwi.jordancrawford.whattomake;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -26,12 +24,8 @@ public class MealDetailFragment extends Fragment {
     private static final String MEAL = "meal";
 
     private Meal meal;
-    private RecyclerView stepsRecyclerView;
-    private RecyclerView.Adapter stepsRecyclerViewAdapter;
-    private RecyclerView.LayoutManager stepsRecyclerViewLayoutManager;
-    private RecyclerView ingredientsRecyclerView;
-    private RecyclerView.Adapter ingredientsRecyclerViewAdapter;
-    private RecyclerView.LayoutManager ingredientsRecyclerViewLayoutManager;
+    private LinearLayout stepsLinearView;
+    private LinearLayout ingredientsLinearView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -79,21 +73,34 @@ public class MealDetailFragment extends Fragment {
             mealPictureView.setImageResource(drawableId);
         }
 
-        // Setup a list of recipe steps.
-        stepsRecyclerView = (RecyclerView) fragmentView.findViewById(R.id.step_list_recycler_view);
-        stepsRecyclerViewLayoutManager = new LinearLayoutManager(getContext());
-        stepsRecyclerView.setLayoutManager(stepsRecyclerViewLayoutManager);
-
-        stepsRecyclerViewAdapter = new RecipeStepsListAdapter(meal.getSteps());
-        stepsRecyclerView.setAdapter(stepsRecyclerViewAdapter);
-
         // Setup a list of the meals ingredients.
-        ingredientsRecyclerView = (RecyclerView) fragmentView.findViewById(R.id.ingredient_list_recycler_view);
-        ingredientsRecyclerViewLayoutManager = new LinearLayoutManager(getContext());
-        ingredientsRecyclerView.setLayoutManager(ingredientsRecyclerViewLayoutManager);
+        ingredientsLinearView = (LinearLayout) fragmentView.findViewById(R.id.ingredient_list_view);
+        for (Ingredient currentIngredient : meal.getIngredients()) {
+            // Inflate the view.
+            View inflatedView = inflater.inflate(R.layout.recipe_ingredient, ingredientsLinearView, false);
+            ingredientsLinearView.addView(inflatedView);
 
-        ingredientsRecyclerViewAdapter = new MealIngredientListAdapter(meal.getIngredients());
-        ingredientsRecyclerView.setAdapter(ingredientsRecyclerViewAdapter);
+            // Setup data in the view.
+            TextView ingredientName = (TextView) inflatedView.findViewById(R.id.recipe_ingredient_name);
+            TextView ingredientAvaliable = (TextView) inflatedView.findViewById(R.id.recipe_ingredient_avaliable);
+            ingredientName.setText(currentIngredient.getName());
+            ingredientAvaliable.setText(currentIngredient.isAvaliable() ? "Avaliable" : "Not avaliable");
+        }
+
+        // Setup a list of recipe steps.
+        stepsLinearView = (LinearLayout) fragmentView.findViewById(R.id.step_list_recycler_view);
+        for (int currentRecipeStepIndex = 0; currentRecipeStepIndex < meal.getSteps().length; currentRecipeStepIndex++) {
+            String currentRecipeStep = meal.getSteps()[currentRecipeStepIndex];
+            // Inflate the view.
+            View inflatedView = inflater.inflate(R.layout.recipe_step, stepsLinearView, false);
+            stepsLinearView.addView(inflatedView);
+
+            // Setup data in the view.
+            TextView stepNumber = (TextView) inflatedView.findViewById(R.id.recipe_step_number);
+            TextView stepInstruction = (TextView) inflatedView.findViewById(R.id.recipe_step_instruction);
+            stepNumber.setText(String.valueOf(currentRecipeStepIndex+1));
+            stepInstruction.setText(currentRecipeStep);
+        }
 
         return fragmentView;
     }

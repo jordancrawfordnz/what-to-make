@@ -46,15 +46,15 @@
                     android:layout_toRightOf="@id/meal_detail_ingredient_header_picture"
                     android:paddingTop="@dimen/meal_detail_ingredient_header_vert_padding"
                     android:paddingBottom="@dimen/meal_detail_ingredient_header_vert_padding"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
+                    android:textSize="24sp"
                     android:text="@string/meal_detail_ingredient_header"/>
             </RelativeLayout>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/ingredient_list_recycler_view"
+            <LinearLayout
+                android:id="@+id/ingredient_list_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:orientation="vertical"
+                android:layout_height="wrap_content"></LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -75,14 +75,14 @@
                     android:layout_toRightOf="@id/meal_detail_recipe_header_picture"
                     android:paddingTop="@dimen/meal_detail_steps_header_vert_padding"
                     android:paddingBottom="@dimen/meal_detail_steps_header_vert_padding"
-                    android:textStyle="bold"
-                    android:textSize="18dp"
+                    android:textSize="24sp"
                     android:text="@string/meal_detail_steps_header"/>
             </RelativeLayout>
 
-            <android.support.v7.widget.RecyclerView
+            <LinearLayout
                 android:id="@+id/step_list_recycler_view"
                 android:layout_width="match_parent"
+                android:orientation="vertical"
                 android:layout_height="wrap_content"/>
 
         </android.support.v7.widget.LinearLayoutCompat>
