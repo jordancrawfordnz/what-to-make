@@ -23,8 +23,7 @@ public class MealDetailActivity extends AppCompatActivity implements MealDetailF
 
         // Get the meal.
         Meal meal = SampleDataHelper.allMeals.get(mealIndex);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(meal.getName());
+        final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
             // TODO: Update the title when the page changes.
@@ -33,6 +32,23 @@ public class MealDetailActivity extends AppCompatActivity implements MealDetailF
         // Setup the PagerAdapter.
         pagerAdapter = new MealDetailPagerAdapter(getSupportFragmentManager(), SampleDataHelper.allMeals);
         pager.setAdapter(pagerAdapter);
+        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                // Do nothing.
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Meal meal = SampleDataHelper.allMeals.get(position);
+                actionBar.setTitle(meal.getName());
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                // Do nothing.
+            }
+        });
         pager.setCurrentItem(mealIndex);
     }
 }
