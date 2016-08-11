@@ -25,36 +25,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity implements MyIngredientsFragment.OnFragmentInteractionListener {
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter recyclerViewAdapter;
-    private RecyclerView.LayoutManager recyclerViewLayoutManager;
     private DrawerLayout drawerLayout;
 
     private final int DRAWER_GRAVITY = GravityCompat.END;
+    private final int MY_INGREDIENTS_FRAME = R.id.my_ingredients_frame;
+    private final int MEAL_CARDS_FRAME = R.id.meal_cards_frame;
+
+    private MyIngredientsFragment myIngredientsFragment;
+    private MealCardsFragment mealCardsFragment;
+
 
     @Override
     public void myIngredientsChanged() {
         ArrayList<Meal> meals = SampleDataHelper.allMeals;
         Collections.sort(meals);
 
-        // Using this method to notify of data changes shows an animation.
-        // Ideally this would determine which items need to move, but for now just animate all of them.
-        recyclerViewAdapter.notifyItemRangeChanged(0, meals.size());
-    }
-
-    // Setup a listener that opens a meal detail view when it is touched.
-    private class OnMealClickListener implements OnClickListener<Meal> {
-        MainActivity activityInstance;
-        public OnMealClickListener(MainActivity activityInstance) {
-            this.activityInstance = activityInstance;
-        }
-
-        @Override
-        public void onItemClick(int itemIndex) {
-            Intent intent = new Intent(activityInstance, MealDetailActivity.class);
-            intent.putExtra(MealDetailActivity.INTENT_MEAL_INDEX_KEY, itemIndex);
-            startActivity(intent);
-        }
+        mealCardsFragment.onMyIngredientsChanged();
     }
 
     // Inflate the action bar menu's options.
@@ -86,18 +72,6 @@ public class MainActivity extends AppCompatActivity implements MyIngredientsFrag
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final ArrayList<Meal> meals;
-        try {
-            // TODO: Don't do this here!
-            meals = SampleDataHelper.getSampleData(getResources().openRawResource(R.raw.sampledata));
-            Collections.sort(meals);
-        } catch(IOException exception) {
-            System.out.println("Could not read the sample data.");
-            return;
-        } catch(JSONException exception) {
-            System.out.println("The sample data file is invalid.");
-            return;
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -105,20 +79,20 @@ public class MainActivity extends AppCompatActivity implements MyIngredientsFrag
 
         // Setup the meal detail fragment.
         FragmentManager fragmentManager = getSupportFragmentManager();
-        if (fragmentManager.findFragmentById(R.id.my_ingredients_frame) == null) {
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            Fragment fragment = (Fragment)MyIngredientsFragment.newInstance();
-            fragmentTransaction.add(R.id.my_ingredients_frame, fragment);
-            fragmentTransaction.commit();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        // TODO: Is this still required?
+
+        if (fragmentManager.findFragmentById(MY_INGREDIENTS_FRAME) == null) {
+            myIngredientsFragment = myIngredientsFragment.newInstance();
+            fragmentTransaction.add(MY_INGREDIENTS_FRAME, myIngredientsFragment);
         }
 
-        // Find the recycler view.
-        recyclerView = (RecyclerView) findViewById(R.id.meal_list_recycler_view);
+        if (fragmentManager.findFragmentById(MEAL_CARDS_FRAME) == null) {
+            mealCardsFragment = mealCardsFragment.newInstance();
+            fragmentTransaction.add(MEAL_CARDS_FRAME, mealCardsFragment);
+        }
 
-        // Setup a linear layout manager.
-        recyclerViewLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(recyclerViewLayoutManager);
-        recyclerViewAdapter = new MealListAdapter(this.getApplicationContext(), meals, new OnMealClickListener(this));
-        recyclerView.setAdapter(recyclerViewAdapter);
+        fragmentTransaction.commit();
     }
 }
