@@ -87,5 +87,95 @@
       "Avocado"
     ],
     "picture" : "meal5"
+  },
+  {
+    "name" : "Kimchi fried rice",
+    "description" : "This simple, simple dish is super, super tasty. It’s just a few ingredients, but it’s a dish much loved by Koreans.",
+    "source" : "http://www.maangchi.com/recipe/kimchi-bokkeumbap",
+    "steps" : [
+      "Heat up a pan. Add the vegetable oil.",
+      "Add the kimchi and stir fry for 1 minute.",
+      "Add rice, kimchi juice, water, and gochujang. Stir all the ingredients together for about 7 minutes with a wooden spoon.",
+      "Add sesame oil and remove from the heat.",
+      "Sprinkle with chopped green onion, roasted gim, and sesame seeds. Serve right away."
+    ],
+    "ingredients" : [
+      "Rice",
+      "Kimchi",
+      "Sesame seeds"
+    ],
+    "picture" : "meal6"
+  },
+  {
+    "name" : "Corn-and-Ham Risotto",
+    "description" : "A bowl of creamy risotto is as comforting as dinner comes.",
+    "source" : "http://www.countryliving.com/food-drinks/recipes/a39368/corn-and-ham-risotto-recipe/",
+    "steps" : [
+      "Heat oil in a large saucepan over medium heat. Add shallot and garlic and cook, stirring occasionally, until softened, 1 to 2 minutes. Add rice and cook, stirring, until opaque, 2 to 4 minutes. Add wine and cook, stirring occasionally, until liquid is absorbed, 1 to 2 minutes. Season with salt and pepper.",
+      "Add 1 cup stock and cook, stirring until absorbed, 5 to 6 minutes. Repeat 2 more times. Add remaining cup stock and corn and cook, stirring, until rice is tender and corn is cooked through, 5 to 7 minutes. Stir in ham and cook until warmed through, 1 to 2 minutes. Remove from heat and stir in cheese until melted. Stir in chives. Season with salt and pepper.",
+      "Serve immediately topped with additional chives."
+    ],
+    "ingredients" : [
+      "Shallot",
+      "Garlic",
+      "Rice",
+      "White wine",
+      "Smoked ham",
+      "Cheese"
+    ],
+    "picture" : "meal7"
+  },
+  {
+    "name" : "Bass Packets with Tomato, Corn, Chickpeas, and Olives",
+    "description" : "Get dinner on the table quick (and keep dirty dishes to a minimum) with these simple fish packets.",
+    "source" : "http://www.countryliving.com/food-drinks/recipes/a38076/bass-packets-with-tomato-corn-chickpeas-and-olives-recipe/",
+    "steps" : [
+      "Preheat oven to 425 degrees F. Place corn, chickpeas, green beans, tomatoes, and olives on one side of four 11'-x-15' pieces of parchment paper, dividing evenly. Drizzle with oil, dividing evenly, and season with salt and pepper.",
+      "Season fish with salt and pepper and top with oregano; place on vegetables, dividing evenly.",
+      "Fold parchment over fish and vegetables, then fold edges under twice to seal. Transfer packets to baking sheet and bake until fish is opaque throughout, 12 to 15 minutes.",
+      "Carefully tear open packets to serve."
+    ],
+    "ingredients" : [
+      "Chickpeas",
+      "Tomatoes",
+      "Olives",
+      "Bass",
+      "Oregano"
+    ],
+    "picture" : "meal8"
+  },
+  {
+    "name" : "Grilled Cumin-Rubbed Hanger Steak with Smashed Minty Peas and Grilled Bread",
+    "description" : "Put a fresh spin on the classic steak dinner.",
+    "source" : "http://www.countryliving.com/food-drinks/recipes/a37762/grilled-cumin-rubbed-hanger-steak-smashed-minty-peas-grilled-bread-recipe/",
+    "steps" : [
+      "Preheat grill to medium-high. Melt 2 tablespoons butter in a small saucepan over medium-high heat. Add peas and cook, stirring often, until soft, 6 to 8 minutes. Add remaining tablespoon butter and mash. Add mint and lime juice and stir to combine. Season with salt and pepper.",
+      "Meanwhile, season steak with cumin and salt and pepper. Grill until internal temperature reaches 130 degrees F (medium-rare), 4 to 5 minutes per side. Let rest 5 minutes before slicing.",
+      "Brush bread, on both sides, with oil. Grill until golden brown and crispy, about 1 minute per side.",
+      "Serve pea mash topped with shaved Parmesan and steak and grilled bread alongside."
+    ],
+    "ingredients" : [
+      "Frozen peas",
+      "Hanger steak",
+      "Country bread",
+      "Parmesan"
+    ],
+    "picture" : "meal9"
+  },
+  {
+    "name" : "Gingery Snap Pea Slaw with Seared Salmon",
+    "description" : "This slaw packs a serious (flavor) punch.",
+    "source" : "http://www.countryliving.com/food-drinks/recipes/a37755/gingery-snap-pea-slaw-with-seared-salmon-recipe/",
+    "steps" : [
+      "Combine snap peas, scallions, red jalapeño, fresh cilantro, fresh ginger, fresh lime juice, rice vinegar, canola oil, and soy sauce.",
+      "Season with Kosher salt and freshly ground black pepper. Serve with seared salmon."
+    ],
+    "ingredients" : [
+      "Snap peas",
+      "Jalapeno",
+      "Scallions",
+      "Salmon"
+    ],
+    "picture" : "meal10"
   }
 ]
