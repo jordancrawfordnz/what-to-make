@@ -1,5 +1,8 @@
 package kiwi.jordancrawford.whattomake;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final int DRAWER_GRAVITY = GravityCompat.END;
 
+    // Setup a listener that opens a meal detail view when it is touched.
     private class OnMealClickListener implements OnClickListener<Meal> {
         MainActivity activityInstance;
         public OnMealClickListener(MainActivity activityInstance) {
@@ -43,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Inflate the action bar menu's options.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -51,9 +56,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    // Handle actions in the action bar.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            // If "My Ingredients" is pressed, toggle the drawer.
             case R.id.action_open_my_ingredients: {
                 if (drawerLayout.isDrawerOpen(DRAWER_GRAVITY)) {
                     drawerLayout.closeDrawer(DRAWER_GRAVITY);
@@ -86,24 +93,14 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = (DrawerLayout)findViewById(R.id.ingredient_drawer_layout);
 
-        // Setup the ingredient list.
-        ListView ingredientListView = (ListView)findViewById(R.id.ingredient_drawer_list);
-        ingredientListView.setAdapter(new MyIngredientsListAdapter(this, R.layout.ingredient_drawer_item, SampleDataHelper.allIngredients));
-
-        ingredientListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                CheckBox ingredientChosenCheckbox = (CheckBox) view.findViewById(R.id.ingredient_drawer_item_checkbox);
-                Ingredient ingredient = SampleDataHelper.allIngredients.get(i);
-                ingredient.setAvaliable(!ingredient.isAvaliable());
-                ingredientChosenCheckbox.setChecked(ingredient.isAvaliable());
-                Collections.sort(meals);
-
-                // Using this method to notify of data changes shows an animation.
-                    // Ideally this would determine which items need to move, but for now just animate all of them.
-                recyclerViewAdapter.notifyItemRangeChanged(0, meals.size());
-            }
-        });
+        // Setup the meal detail fragment.
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if (fragmentManager.findFragmentById(R.id.my_ingredients_frame) == null) {
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            Fragment fragment = (Fragment)MyIngredientsFragment.newInstance();
+            fragmentTransaction.add(R.id.my_ingredients_frame, fragment);
+            fragmentTransaction.commit();
+        }
 
         // Find the recycler view.
         recyclerView = (RecyclerView) findViewById(R.id.meal_list_recycler_view);

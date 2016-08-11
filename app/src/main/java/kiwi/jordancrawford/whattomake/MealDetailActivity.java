@@ -7,7 +7,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MealDetailActivity extends AppCompatActivity implements MealDetailFragment.OnFragmentInteractionListener {
+public class MealDetailActivity extends AppCompatActivity {
     public static final String INTENT_MEAL_INDEX_KEY = "kiwi.jordancrawford.whattomake.intent_meal_index";
 
     ViewPager pager;
@@ -26,7 +26,6 @@ public class MealDetailActivity extends AppCompatActivity implements MealDetailF
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-            // TODO: Update the title when the page changes.
         pager = (ViewPager) findViewById(R.id.meal_detail_pager);
 
         // Setup the PagerAdapter.
