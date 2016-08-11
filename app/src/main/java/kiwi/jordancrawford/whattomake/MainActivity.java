@@ -1,26 +1,14 @@
 package kiwi.jordancrawford.whattomake;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.content.Intent;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.CheckBox;
-import android.widget.ListView;
 
-import org.json.JSONException;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -28,8 +16,6 @@ public class MainActivity extends AppCompatActivity implements MyIngredientsFrag
     private DrawerLayout drawerLayout;
 
     private final int DRAWER_GRAVITY = GravityCompat.END;
-    private final int MY_INGREDIENTS_FRAME = R.id.my_ingredients_frame;
-    private final int MEAL_CARDS_FRAME = R.id.meal_cards_frame;
 
     private MyIngredientsFragment myIngredientsFragment;
     private MealCardsFragment mealCardsFragment;
@@ -79,20 +65,7 @@ public class MainActivity extends AppCompatActivity implements MyIngredientsFrag
 
         // Setup the meal detail fragment.
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        // TODO: Is this still required?
-
-        if (fragmentManager.findFragmentById(MY_INGREDIENTS_FRAME) == null) {
-            myIngredientsFragment = myIngredientsFragment.newInstance();
-            fragmentTransaction.add(MY_INGREDIENTS_FRAME, myIngredientsFragment);
-        }
-
-        if (fragmentManager.findFragmentById(MEAL_CARDS_FRAME) == null) {
-            mealCardsFragment = mealCardsFragment.newInstance();
-            fragmentTransaction.add(MEAL_CARDS_FRAME, mealCardsFragment);
-        }
-
-        fragmentTransaction.commit();
+        myIngredientsFragment = (MyIngredientsFragment) fragmentManager.findFragmentById(R.id.my_ingredients_frame);
+        mealCardsFragment = (MealCardsFragment) fragmentManager.findFragmentById(R.id.meal_cards_frame);
     }
 }
