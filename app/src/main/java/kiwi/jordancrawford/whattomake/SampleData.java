@@ -18,13 +18,11 @@ import java.util.ArrayList;
 /**
  * Created by Jordan on 8/08/16.
  */
-public class SampleDataHelper {
-        // TODO: Put this somewhere nicer.
-    public static ArrayList<Ingredient> allIngredients = new ArrayList<>();
-        // TODO: This is terible.
-    public static ArrayList<Meal> allMeals = new ArrayList<>();
+public class SampleData {
+    private static ArrayList<Ingredient> allIngredients = new ArrayList<>();
+    private static ArrayList<Meal> allMeals = new ArrayList<>();
 
-    public static Meal buildMealFromJSON(JSONObject jsonMeal) throws JSONException {
+    private static Meal buildMealFromJSON(JSONObject jsonMeal) throws JSONException {
         Meal meal = new Meal();
         meal.setName(jsonMeal.getString("name"));
         meal.setDescription(jsonMeal.getString("description"));
@@ -63,7 +61,15 @@ public class SampleDataHelper {
         return meal;
     }
 
-    public static ArrayList<Meal> getSampleData(InputStream jsonInput) throws IOException, JSONException {
+    public static ArrayList<Meal> getAllMeals() {
+        return allMeals;
+    }
+
+    public static ArrayList<Ingredient> getAllIngredients() {
+        return allIngredients;
+    }
+
+    public static void setupSampleData(InputStream jsonInput) throws IOException, JSONException {
         // Read from the JSON file.
         Reader reader = new BufferedReader(new InputStreamReader(jsonInput));
         Writer writer = new StringWriter();
@@ -81,17 +87,11 @@ public class SampleDataHelper {
         String inputString = writer.toString();
 
         // Parse the JSON and build Meals from JSON.
-        ArrayList<Meal> meals = new ArrayList<>();
         JSONArray jsonMeals = new JSONArray(inputString);
         for (int mealIndex = 0; mealIndex < jsonMeals.length(); mealIndex++) {
             JSONObject jsonMeal = jsonMeals.getJSONObject(mealIndex);
-            meals.add(buildMealFromJSON((jsonMeal)));
+            allMeals.add(buildMealFromJSON((jsonMeal)));
         }
-
-        System.out.println("all ingredients");
-        System.out.println(allIngredients);
-        allMeals = meals;
-        return meals;
     }
 
 }

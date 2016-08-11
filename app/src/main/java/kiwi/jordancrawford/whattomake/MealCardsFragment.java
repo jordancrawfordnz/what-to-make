@@ -2,7 +2,6 @@ package kiwi.jordancrawford.whattomake;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -51,25 +50,12 @@ public class MealCardsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // TODO: Don't do this here!
-        final ArrayList<Meal> meals;
-        try {
-            meals = SampleDataHelper.getSampleData(getResources().openRawResource(R.raw.sampledata));
-            Collections.sort(meals);
-        } catch(IOException exception) {
-            System.out.println("Could not read the sample data.");
-            return;
-        } catch(JSONException exception) {
-            System.out.println("The sample data file is invalid.");
-            return;
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final ArrayList<Meal> meals = SampleDataHelper.allMeals;
+        final ArrayList<Meal> meals = SampleData.getAllMeals();
 
         // Inflate the layout for this fragment
         View inflatedView = inflater.inflate(R.layout.fragment_meal_cards, container, false);
@@ -99,6 +85,6 @@ public class MealCardsFragment extends Fragment {
     public void onMyIngredientsChanged() {
         // Using this method to notify of data changes shows an animation.
             // Ideally this would determine which items need to move, but for now just animate all of them.
-        recyclerViewAdapter.notifyItemRangeChanged(0, SampleDataHelper.allMeals.size());
+        recyclerViewAdapter.notifyItemRangeChanged(0, SampleData.getAllMeals().size());
     }
 }

@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements MyIngredientsFrag
 
     @Override
     public void myIngredientsChanged() {
-        ArrayList<Meal> meals = SampleDataHelper.allMeals;
+        ArrayList<Meal> meals = SampleData.getAllMeals();
         Collections.sort(meals);
 
         mealCardsFragment.onMyIngredientsChanged();

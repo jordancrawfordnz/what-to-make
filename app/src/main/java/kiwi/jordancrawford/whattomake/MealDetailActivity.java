@@ -22,14 +22,14 @@ public class MealDetailActivity extends AppCompatActivity {
         int mealIndex = intent.getIntExtra(INTENT_MEAL_INDEX_KEY, 0);
 
         // Get the meal.
-        Meal meal = SampleDataHelper.allMeals.get(mealIndex);
+        Meal meal = SampleData.getAllMeals().get(mealIndex);
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         pager = (ViewPager) findViewById(R.id.meal_detail_pager);
 
         // Setup the PagerAdapter.
-        pagerAdapter = new MealDetailPagerAdapter(getSupportFragmentManager(), SampleDataHelper.allMeals);
+        pagerAdapter = new MealDetailPagerAdapter(getSupportFragmentManager(), SampleData.getAllMeals());
         pager.setAdapter(pagerAdapter);
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -39,7 +39,7 @@ public class MealDetailActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                Meal meal = SampleDataHelper.allMeals.get(position);
+                Meal meal = SampleData.getAllMeals().get(position);
                 actionBar.setTitle(meal.getName());
             }
 

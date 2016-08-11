@@ -1,7 +1,6 @@
 package kiwi.jordancrawford.whattomake;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.ListView;
-
-import java.util.Collections;
 
 
 /**
@@ -41,13 +38,13 @@ public class MyIngredientsFragment extends Fragment {
 
         // Setup the ingredient list.
         final ListView ingredientListView = (ListView)inflatedView.findViewById(R.id.ingredient_drawer_list);
-        ingredientListView.setAdapter(new MyIngredientsListAdapter(getContext(), R.layout.ingredient_drawer_item, SampleDataHelper.allIngredients));
+        ingredientListView.setAdapter(new MyIngredientsListAdapter(getContext(), R.layout.ingredient_drawer_item, SampleData.getAllIngredients()));
 
         ingredientListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CheckBox ingredientChosenCheckbox = (CheckBox) view.findViewById(R.id.ingredient_drawer_item_checkbox);
-                Ingredient ingredient = SampleDataHelper.allIngredients.get(i);
+                Ingredient ingredient = SampleData.getAllIngredients().get(i);
                 ingredient.setAvaliable(!ingredient.isAvaliable());
                 ingredientChosenCheckbox.setChecked(ingredient.isAvaliable());
 
