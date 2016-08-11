@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
-    tools:context="kiwi.jordancrawford.whattomake.MyIngredientsFragment">
+    tools:context="kiwi.jordancrawford.whattomake.MyIngredientsFragment"
+    android:elevation="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
