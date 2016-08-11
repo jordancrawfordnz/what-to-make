@@ -16,7 +16,7 @@
     <!-- Ingredients drawer fragment container -->
     <fragment
         android:id="@+id/my_ingredients_frame"
-        android:layout_width="240dp"
+        android:layout_width="@dimen/my_ingredients_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:name="kiwi.jordancrawford.whattomake.MyIngredientsFragment">

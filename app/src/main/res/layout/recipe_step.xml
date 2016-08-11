@@ -3,18 +3,18 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp">
+    android:layout_marginBottom="@dimen/recipe_step_margin_bottom">
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/recipe_step_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="18dp"
+        android:textSize="@dimen/recipe_step_number_text_size"
         android:textStyle="bold" />
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/recipe_step_instruction"
         android:layout_width="0dp"
-        android:textSize="18dp"
+        android:textSize="@dimen/recipe_step_name_text_size"
         android:layout_height="wrap_content"
         android:layout_weight="8"/>
 </LinearLayout>

@@ -2,8 +2,5 @@
     <string name="app_name">What to Make?</string>
     <string name="meal_detail_ingredient_header">Ingredients</string>
     <string name="meal_detail_steps_header">Recipe</string>
-    <string name="my_ingredients">My Ingredients</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="my_ingredients_heading_text">My Ingredients</string>
 </resources>

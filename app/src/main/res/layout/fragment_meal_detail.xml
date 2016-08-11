@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/meal_detail_background"
     tools:context="kiwi.jordancrawford.whattomake.MealDetailFragment">
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -9,35 +10,39 @@
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
+        <!-- Picture of the meal -->
         <android.support.v7.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="@dimen/meal_detail_picture_height"
             android:scaleType="centerCrop"
             android:id="@+id/meal_detail_picture"/>
 
+        <!-- Main content -->
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/meal_detail_text_padding">
+            android:padding="@dimen/meal_detail_main_content_padding">
 
+            <!-- Meal description -->
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/meal_detail_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"/>
+                android:textSize="@dimen/meal_detail_description_text_size"/>
 
+            <!-- Ingredients heading -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="@dimen/meal_detail_section_margin_top">
 
                 <ImageView
                     android:id="@+id/meal_detail_ingredient_header_picture"
-                    android:layout_width="26dp"
+                    android:layout_width="@dimen/meal_detail_section_heading_picture_width"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="@dimen/meal_detail_section_heading_picture_margin_right"
                     android:src="@drawable/ic_ingredients_light"/>
 
                 <android.support.v7.widget.AppCompatTextView
@@ -45,29 +50,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/meal_detail_ingredient_header_picture"
-                    android:paddingTop="@dimen/meal_detail_ingredient_header_vert_padding"
-                    android:paddingBottom="@dimen/meal_detail_ingredient_header_vert_padding"
-                    android:textSize="24sp"
+                    android:paddingTop="@dimen/meal_detail_section_heading_vert_padding"
+                    android:paddingBottom="@dimen/meal_detail_section_heading_vert_padding"
+                    android:textSize="@dimen/meal_detail_section_heading_text_size"
                     android:text="@string/meal_detail_ingredient_header"/>
             </RelativeLayout>
 
+            <!-- Ingredients -->
             <LinearLayout
                 android:id="@+id/ingredient_list_view"
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:layout_height="wrap_content"></LinearLayout>
 
+            <!-- Steps heading -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="@dimen/meal_detail_section_margin_top">
 
                 <ImageView
                     android:id="@+id/meal_detail_recipe_header_picture"
-                    android:layout_width="26dp"
+                    android:layout_width="@dimen/meal_detail_section_heading_picture_width"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="@dimen/meal_detail_section_heading_picture_margin_right"
                     android:src="@drawable/ic_format_list_numbers_black_24dp"/>
 
                 <android.support.v7.widget.AppCompatTextView
@@ -75,12 +82,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/meal_detail_recipe_header_picture"
-                    android:paddingTop="@dimen/meal_detail_steps_header_vert_padding"
-                    android:paddingBottom="@dimen/meal_detail_steps_header_vert_padding"
-                    android:textSize="24sp"
+                    android:paddingTop="@dimen/meal_detail_section_heading_vert_padding"
+                    android:paddingBottom="@dimen/meal_detail_section_heading_vert_padding"
+                    android:textSize="@dimen/meal_detail_section_heading_text_size"
                     android:text="@string/meal_detail_steps_header"/>
             </RelativeLayout>
 
+            <!-- Steps -->
             <LinearLayout
                 android:id="@+id/step_list_recycler_view"
                 android:layout_width="match_parent"

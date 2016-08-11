@@ -2,9 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF"
+    android:background="@color/my_ingredients_background"
     tools:context="kiwi.jordancrawford.whattomake.MyIngredientsFragment"
-    android:elevation="10dp">
+    android:elevation="@dimen/my_ingredients_elevation">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,9 +14,10 @@
             android:id="@+id/ingredient_drawer_heading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:padding="10dp"
-            android:text="My Ingredients"/>
+            android:textSize="@dimen/my_ingredients_header_text_size"
+            android:padding="@dimen/my_ingredients_padding"
+            android:text="@string/my_ingredients_heading_text"/>
+
         <ListView android:id="@+id/ingredient_drawer_list"
             android:layout_width="match_parent"
             android:layout_below="@id/ingredient_drawer_heading"

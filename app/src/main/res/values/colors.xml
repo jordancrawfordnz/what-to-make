@@ -3,4 +3,6 @@
     <color name="colorPrimary">#F44336</color>
     <color name="colorPrimaryDark">#D32F2F</color>
     <color name="colorAccent">#FF5722</color>
+    <color name="my_ingredients_background">#FFF</color>
+    <color name="meal_detail_background">#FFF</color>
 </resources>
