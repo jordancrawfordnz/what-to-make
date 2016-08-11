@@ -4,9 +4,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.content.Intent;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -15,7 +12,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
 
@@ -40,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onItemClick(Meal item) {
+        public void onItemClick(int itemIndex) {
             Intent intent = new Intent(activityInstance, MealDetailActivity.class);
-            intent.putExtra(MealDetailActivity.INTENT_MEAL_KEY, item);
+            intent.putExtra(MealDetailActivity.INTENT_MEAL_INDEX_KEY, itemIndex);
             startActivity(intent);
         }
     }

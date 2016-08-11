@@ -21,6 +21,8 @@ import java.util.ArrayList;
 public class SampleDataHelper {
         // TODO: Put this somewhere nicer.
     public static ArrayList<Ingredient> allIngredients = new ArrayList<>();
+        // TODO: This is terible.
+    public static ArrayList<Meal> allMeals = new ArrayList<>();
 
     public static Meal buildMealFromJSON(JSONObject jsonMeal) throws JSONException {
         Meal meal = new Meal();
@@ -88,6 +90,7 @@ public class SampleDataHelper {
 
         System.out.println("all ingredients");
         System.out.println(allIngredients);
+        allMeals = meals;
         return meals;
     }
 

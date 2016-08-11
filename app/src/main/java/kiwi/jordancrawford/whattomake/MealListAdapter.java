@@ -41,7 +41,7 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
             this.mealCardPicture = (ImageView)view.findViewById(R.id.meal_card_picture);
         }
 
-        public void setupView(final Meal meal) {
+        public void setupView(final int position, final Meal meal) {
             // Setup the view.
             mealCardName.setText(meal.getName());
             mealCardDescription.setText(meal.getDescription());
@@ -52,7 +52,7 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
             // Setup a click listener for this view.
             view.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View view) {
-                    onClickListener.onItemClick(meal);
+                    onClickListener.onItemClick(position);
                 }
             });
         }
@@ -84,7 +84,7 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
         Meal currentMeal = meals.get(position);
 
         // Setup the view holder with the data.
-        holder.setupView(currentMeal);
+        holder.setupView(position, currentMeal);
     }
 
     /**
